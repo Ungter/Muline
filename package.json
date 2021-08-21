@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@discordjs/opus": "^0.5.0",
+    "coingecko-api": "^1.0.10",
+    "discord.js": "^12.5.3",
+    "yt-search": "^2.8.0",
+    "ytdl-core": "^4.8.2"
+  }
+}
