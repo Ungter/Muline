@@ -454,5 +454,5 @@ function play(guild, song) {
 process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
 
 
-client.login('NzU5ODIxMjMzMTIyMTgxMTIw.X3DEqg.8ESU4avGdqZ5ORk7V8w6BftqpbQ');
+client.login('');
 
