@@ -447,4 +447,4 @@ process.on('unhandledRejection', error => console.error('Uncaught Promise Reject
 
 
 
-client.login('NzU5ODIxMjMzMTIyMTgxMTIw.X3DEqg.5xdop62Cyjj59yQscjMi88snMTY');
+client.login('');
