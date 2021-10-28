@@ -1,5 +1,5 @@
 module.exports = {
-    name: "anime",
+    name: "pic",
     execute(message, args) {
         const Discord = require('discord.js');
         const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"]});

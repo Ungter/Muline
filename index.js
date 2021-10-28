@@ -1,4 +1,3 @@
-
 const Discord = require('discord.js');
 const config  = require('./config.json');
 const ytdl = require('ytdl-core');
@@ -16,6 +15,9 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 const queue = new Map();
 const prefix = "~"
 const servers = {};
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
 const urmom = "https://tenor.com/view/explosion-boom-explode-gif-17383346"
 //const ws = document.createTextNode("\u00A0")
 
@@ -121,7 +123,7 @@ client.on("message", async message => {
         .setColor("#C0EBFF")
         .setDescription(":exclamation: for **Potato Gang** ")
         .setFooter("Note: You need to leave your current team to join a new one!")
-        let msgEmbed = await message.channel.send(embed)
+        let msgEmbed = await message.channel.send(embed)                                                                                                                            
         msgEmbed.react(emojiChar['!'])
     } else if (message.channel.id === "764708136173961266") {
       let embed = new Discord.MessageEmbed()
@@ -134,6 +136,7 @@ client.on("message", async message => {
   }
 }
 })
+
 
 client.on("messageReactionAdd", async (reaction, user) => {
   if (user.bot) return;
@@ -226,23 +229,9 @@ client.on('message', async message => {
     message.channel.send(coinEmbed)
     } 
   } 
-  /*else if (command === 'remind') {
-    const CoinGeckoClient = new CoinGecko();
-    setInterval(() => {
-      let { data } = await CoinGeckoClient.coins.fetch(args)
+  //end of crypto
 
-      var reply = data.name
-      var reply3 = data.market_data.ath.usd
   
-      if (reply3 < 50000) {
-        message.channel.send("hey @Space Potato#4013, ", reply, " is at: ", reply3, "!")
-      }
-    }, 72000000)
-  }*/
-
-  if (command === 't' ) {
-    client.users.cache.get("308295533888536587").send('gay')
-  }
 
   
   if (!client.commands.has(command)) return;
@@ -251,7 +240,7 @@ client.on('message', async message => {
 
 	if (!command) return;
 
-  if (command.args &&  !args.length) {
+  if (command.args &&  !args.length) {0
     return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
   }*/
   try {
@@ -423,7 +412,6 @@ function stop(message, serverQueue) {
 function play(guild, song) {
   const serverQueue = queue.get(guild.id);
   if (!song) {
-    //message.channel.send("That's the end of the queue!")
     serverQueue.voiceChannel.leave();
     queue.delete(guild.id);
     return;
@@ -435,7 +423,11 @@ function play(guild, song) {
     .play(ytdl(song.url))
     .on("finish", () => {
       if (!serverQueue.loop) serverQueue.songs.shift();
-      play(guild, serverQueue.songs[0], {quailty: 'highestaudio', highWaterMark: 1 << 25});
+      // play the song that is now at the front of the queue with the highest audio quality
+      play(guild, serverQueue.songs[0], {quality: "highestaudio"});
+
+
+      // play(guild, serverQueue.songs[0], {quailty: 'highestaudio', highWaterMark: 1 << 25});
     })
     .on("error", error => console.error(error));
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
@@ -454,5 +446,5 @@ function play(guild, song) {
 process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
 
 
-client.login('');
 
+client.login('NzU5ODIxMjMzMTIyMTgxMTIw.X3DEqg.5xdop62Cyjj59yQscjMi88snMTY');

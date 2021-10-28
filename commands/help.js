@@ -2,6 +2,7 @@ module.exports = {
     name: "help",
     args: true,
     execute(message, args) {
+
         if (message.author.bot) return;
         const Discord = require('discord.js');
         const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"]});
@@ -19,7 +20,7 @@ module.exports = {
         .addField(`**~anime**`, `sends a random anime related pic`)
         .addField(`**~lackin**`, `sends a nsfw anime related pic`)
         .addField(`**~c**`, `gives info on the crypto you put in (ex:~c bitcoin)`)
-      message.channel.send(helpEmbed)
+      message.channel.send(helpEmbed) 
 
 
 

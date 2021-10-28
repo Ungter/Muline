@@ -11,7 +11,7 @@ module.exports = {
 
         if (message.content.startsWith(`${prefix}kick`)) {
             const user = message.mentions.users.first();
-
+            
         if (!message.member.hasPermission("KICK_MEMBERS")) {
             return message.channel.send("You don't have permission to kick this person")
         }
@@ -39,6 +39,6 @@ module.exports = {
         } else {
       message.reply('Did you really forget to mention a user');
     }
-  }
+}
     },
 };
