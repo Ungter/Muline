@@ -48,15 +48,12 @@ client.on( "ready", () => {
 //normal texts
  client.on('message', message => {
     const susArgs = "SUS"
-    //const sus = message.content.toLowerCase.includes(susArgs)
-    
-
    if (message.content === `${prefix}beep`) {
     message.channel.send('Boop');
   } else if (message.content.includes('stfu')) {
     let authorId = message.author.id;
     if (authorId === '376178128835313694') return;
-        else message.channel.send('no you stfu');
+     	 message.channel.send('no you stfu');
     }
     else if (message.content.startsWith('hello')) {
     message.channel.send('Hello!')
@@ -85,30 +82,14 @@ client.on( "ready", () => {
   }  else if (message.content === `ip`) {
     const ipEmbed = new Discord.MessageEmbed()
       .setColor("#C0EBFF")
-      .setTitle("207.244.79.120:44257")
+      .setTitle("")
     message.channel.send(ipEmbed)
-  } else if (message.content.includes(`ur\x20mom`)) {
-    message.channel.send(urmom)
-  } else if (message.content.includes(`Ur\x20mom`)) {
-    message.channel.send(urmom)
-  } else if (message.content.includes(`UR\x20mom`)) {
-    message.channel.send(urmom)
-  } else if (message.content.includes(`UR\x20Mom`)) {
-    message.channel.send(urmom)
-  } else if (message.content.includes(`UR\x20MOm`)) {
-    message.channel.send(urmom)
-  } else if (message.content.includes(`UR\x20MOM`)) {
-    message.channel.send(urmom)
-  } else if (message.content.includes(`Ur\x20Mom`)) {
-    message.channel.send(urmom)
   } else if (message.author.id === "822903032039735328") {
     message.delete({timeout:1000})
-  }/**else if (sus) {
-    message.channel.send("amogus")
-  }**/
+  }
 
 
-
+/*
 //matt's smp
 client.on("message", async message => {
   if(message.author.bot || message.channel.type === 'dm') return;
@@ -176,16 +157,8 @@ client.on("messageReactionRemove", async (reaction, user) => {
       await reaction.message.guild.members.cache.get(user.id).roles.remove("764697713476239380")
     }
   }
-})
-//("764681995669864478")potato
-//("764697713476239380")steve
-//end of matt's smp
-
-
-
-
-
-  
+}) 
+*/
 });
 //end of normal texts
 
@@ -204,36 +177,30 @@ client.on('message', async message => {
     //var reply = data.gecko_says //extracts the data from  the JSON file
     let { data } = await CoinGeckoClient.coins.fetch(args)
     
-    var reply = data.name
-    var reply1 = data.symbol
-    var reply2 = data.market_data.circulating_supply
-    var reply3 = data.market_data.ath.usd
-    var reply4 = data.image.large
-    var reply5 = data.last_updated
-    var reply6 = data.hashing_algorithm
+    var name = data.name
+    var symbol = data.symbol
+    var circSupply = data.market_data.circulating_supply
+    var allTimeHighUSD = data.market_data.ath.usd
+    var logo = data.image.large
+    var LU = data.last_updated
+    var algo = data.hashing_algorithm
 
-    var ud = reply, reply1, reply2, reply3, reply4, reply5, reply6
-
-    if (ud == undefined) {
-      message.channel.send("One of the varibles are missing")
-    } else {
+    var ud = name, symbol, circSupply, allTimeHighUSD, logo, LU, algo
+    
       const coinEmbed = new Discord.MessageEmbed()
       .setColor("#C0EBFF")
-      .setTitle(reply, reply1)
-      .setImage(reply4)
-      .addField(`**Price:**`, reply3, " USD")
-      .addField(`**Circulating Supply:**`, reply2, `coins`)
-      .addField(`**Hashing Algo:**`, reply6)
-      .addField("**Last updated at**", reply5)
+      .setTitle(name, symbol)
+      .setImage(logo)
+      .addField(`**Price:**`, allTimeHighUSD, " USD")
+      .addField(`**Circulating Supply:**`, circSupply, `coins`)
+      .addField(`**Hashing Algo:**`, algo)
+      .addField("**Last updated at**", LU)
       
     message.channel.send(coinEmbed)
-    } 
+     
   } 
   //end of crypto
 
-  
-
-  
   if (!client.commands.has(command)) return;
   /*const command = client.commands.get(commandName)
 	  || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
@@ -249,14 +216,8 @@ client.on('message', async message => {
   } catch (error) {
 	  console.error(error);
 	  message.channel.send('there was an error trying to execute that command!');
-  }
-  
-  
+  }  
 });
-
-
-
-
 
 //music bot part
 client.on("message", async message => {
@@ -417,16 +378,12 @@ function play(guild, song) {
     return;
   }
 
-
-
   const dispatcher = serverQueue.connection
     .play(ytdl(song.url))
     .on("finish", () => {
       if (!serverQueue.loop) serverQueue.songs.shift();
       // play the song that is now at the front of the queue with the highest audio quality
       play(guild, serverQueue.songs[0], {quality: "highestaudio"});
-
-
       // play(guild, serverQueue.songs[0], {quailty: 'highestaudio', highWaterMark: 1 << 25});
     })
     .on("error", error => console.error(error));
@@ -439,12 +396,6 @@ function play(guild, song) {
 }
 //end of music bot
 
-
-
-
-
 process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
-
-
 
 client.login('');
